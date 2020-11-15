@@ -76,6 +76,26 @@ class ViewController:
         BluetoothLeService
           .shared
           .hrvSensors[indexPath.row].values.first!)
+    
+    self.performSegue(withIdentifier: "showHeartRate", sender: nil)
+  }
+  
+  ///
+  /// Performs the segue if the user has available pomos
+  ///
+  override func performSegue(withIdentifier identifier: String, sender: Any?) {
+      if shouldPerformSegue(withIdentifier: identifier, sender: nil) {
+          super.performSegue(withIdentifier: identifier, sender: nil)
+      }
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+      super.prepare(for: segue, sender: sender)
+
+      if let secondViewController = segue.destination as? HeartRateViewController {
+          secondViewController.modalPresentationStyle = .fullScreen
+      }
   }
 }
 

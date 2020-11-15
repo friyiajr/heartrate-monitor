@@ -17,16 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="fN1-F5-3cg">
-                                <rect key="frame" x="34" y="111" width="347" height="692.5"/>
+                                <rect key="frame" x="32" y="176" width="350" height="544.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Scan for EliteHRV Heart Rate Monitor" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUO-xH-FDD">
-                                        <rect key="frame" x="6.5" y="0.0" width="334" height="168.5"/>
+                                        <rect key="frame" x="8" y="0.0" width="334" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i4d-UJ-eqv">
-                                        <rect key="frame" x="0.0" y="230.5" width="347" height="350"/>
+                                        <rect key="frame" x="0.0" y="82.5" width="350" height="350"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="350" id="3WP-aO-dPE"/>
@@ -40,7 +40,7 @@
                                         </connections>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxk-s8-pCI">
-                                        <rect key="frame" x="61" y="642.5" width="225" height="50"/>
+                                        <rect key="frame" x="62.5" y="494.5" width="225" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="225" id="75r-Ld-wwe"/>
                                             <constraint firstAttribute="height" constant="50" id="ib0-kK-PJo"/>
@@ -53,33 +53,33 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="RUO-xH-FDD" firstAttribute="top" secondItem="fN1-F5-3cg" secondAttribute="top" id="4wY-xd-5xZ"/>
+                                    <constraint firstAttribute="width" constant="350" id="c1P-ic-1Qk"/>
                                     <constraint firstAttribute="bottom" secondItem="nxk-s8-pCI" secondAttribute="bottom" id="q0v-7F-kUJ"/>
+                                    <constraint firstAttribute="height" constant="544.5" id="q7M-o2-lCJ"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fN1-F5-3cg" secondAttribute="trailing" constant="33" id="8nd-gF-J52"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fN1-F5-3cg" secondAttribute="bottom" constant="58.5" id="Ss3-dG-6MA"/>
-                            <constraint firstItem="fN1-F5-3cg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="34" id="mtY-SA-gTM"/>
-                            <constraint firstItem="fN1-F5-3cg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="67" id="tt9-2T-4WW"/>
+                            <constraint firstItem="fN1-F5-3cg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="N00-Fw-mAF"/>
+                            <constraint firstItem="fN1-F5-3cg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YAq-Ly-pkf"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="i4d-UJ-eqv" id="jYm-HX-avV"/>
                         <outlet property="view" destination="i4d-UJ-eqv" id="5Wl-zb-A1Z"/>
-                        <segue destination="Y46-H6-RNJ" kind="showDetail" identifier="showHeartRate" id="nGq-yN-hXu"/>
+                        <segue destination="Y46-H6-RNJ" kind="presentation" identifier="showHeartRate" id="nGq-yN-hXu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140.57971014492756" y="128.57142857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Heart Rate View Controller-->
         <scene sceneID="HVD-zA-WyW">
             <objects>
-                <viewController id="Y46-H6-RNJ" sceneMemberID="viewController">
+                <viewController id="Y46-H6-RNJ" customClass="HeartRateViewController" customModule="HeartRateMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="paK-ax-WxH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,6 +105,10 @@
                             <constraint firstItem="M9C-hm-dIO" firstAttribute="top" secondItem="b2n-Ja-ep6" secondAttribute="top" constant="112" id="ygI-af-KO5"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="PLE-Aq-EbI"/>
+                    <connections>
+                        <outlet property="labelHeartRate" destination="pTG-cv-0RT" id="6BB-eX-Kh3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Vs-Sk-T0O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

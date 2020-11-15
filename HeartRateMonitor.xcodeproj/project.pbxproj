@@ -14,6 +14,7 @@
 		8B2A942D25614FD400F2B053 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B2A942C25614FD400F2B053 /* Assets.xcassets */; };
 		8B2A943025614FD400F2B053 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B2A942E25614FD400F2B053 /* LaunchScreen.storyboard */; };
 		8B2A943A256151F200F2B053 /* BluetoothLeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A9439256151F200F2B053 /* BluetoothLeService.swift */; };
+		8B2A9441256177DF00F2B053 /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A9440256177DF00F2B053 /* HeartRateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		8B2A942F25614FD400F2B053 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B2A943125614FD400F2B053 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B2A9439256151F200F2B053 /* BluetoothLeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothLeService.swift; sourceTree = "<group>"; };
+		8B2A9440256177DF00F2B053 /* HeartRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				8B2A942C25614FD400F2B053 /* Assets.xcassets */,
 				8B2A942E25614FD400F2B053 /* LaunchScreen.storyboard */,
 				8B2A943125614FD400F2B053 /* Info.plist */,
+				8B2A9440256177DF00F2B053 /* HeartRateViewController.swift */,
 			);
 			path = HeartRateMonitor;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B2A9441256177DF00F2B053 /* HeartRateViewController.swift in Sources */,
 				8B2A942825614FD300F2B053 /* ViewController.swift in Sources */,
 				8B2A942425614FD300F2B053 /* AppDelegate.swift in Sources */,
 				8B2A942625614FD300F2B053 /* SceneDelegate.swift in Sources */,

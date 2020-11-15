@@ -45,6 +45,11 @@ class BluetoothLeService :
   let heartRateMeasurementCharacteristicCBUUID = CBUUID(string: "2A37")
   
   ///
+  /// The user's current BPM
+  ///
+  var bpm: Int = 0
+  
+  ///
   /// Default initializer
   ///
   override init() {
@@ -162,7 +167,7 @@ class BluetoothLeService :
     switch characteristic.uuid {
     case heartRateMeasurementCharacteristicCBUUID:
       let bpm = heartRate(from: characteristic)
-      print(bpm)
+      self.bpm = bpm
     default:
       print("Unhandled Characteristic UUID: \(characteristic.uuid)")
     }
@@ -173,7 +178,6 @@ class BluetoothLeService :
   /// mesurement is in the 2nd, or in the 2nd and 3rd bytes
   ///
   private func heartRate(from characteristic: CBCharacteristic) -> Int {
-    print("Hello 3")
     guard let characteristicData = characteristic.value else { return -1 }
     let byteArray = [UInt8](characteristicData)
 
