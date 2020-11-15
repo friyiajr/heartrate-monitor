@@ -16,7 +16,7 @@ class BluetoothLeService :
   ///
   /// Static variable representing the shared singleton for BluetoothLeService
   ///
-  static var sharedInstance: BluetoothLeService!
+  private static var _sharedInstance: BluetoothLeService!
   
   ///
   /// Constant used to make sure the only thing picked up by the BLE Scan
@@ -40,11 +40,16 @@ class BluetoothLeService :
   var hrvSensors: [[String:CBPeripheral]]!
   
   ///
+  /// Constant representing the heard rate characteristic service
+  ///
+  let heartRateMeasurementCharacteristicCBUUID = CBUUID(string: "2A37")
+  
+  ///
   /// Default initializer
   ///
   override init() {
     super.init()
-    self.centralManager = CBCentralManager(delegate: self, queue: nil)
+    self.centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.global())
     self.hrvSensors = [[String:CBPeripheral]]()
   }
   
@@ -78,7 +83,9 @@ class BluetoothLeService :
     _ central: CBCentralManager,
     didConnect peripheral: CBPeripheral
   ) {
-    print("Connected")
+    eliteHrvHeartRateMonitor.delegate = self
+    eliteHrvHeartRateMonitor
+      .discoverServices([heartRateServiceCBUUID])
   }
   
   ///
@@ -105,7 +112,77 @@ class BluetoothLeService :
   /// Method for connecting to a Bluetooth Peripheral
   ///
   func connectToEliteHrvDevice(peripheral: CBPeripheral) {
+    eliteHrvHeartRateMonitor = peripheral
     centralManager.connect(peripheral)
+  }
+  
+  ///
+  /// Delegate method that discovers all relevant services on the Heart Rate
+  /// peripheral
+  ///
+  func peripheral(
+    _ peripheral: CBPeripheral,
+    didDiscoverServices error: Error?
+  ) {
+    guard let services = peripheral.services else { return }
+
+    for service in services {
+      eliteHrvHeartRateMonitor.discoverCharacteristics(nil, for: service)
+    }
+  }
+  
+  ///
+  /// Delegate method that discovers all characteristics available to the
+  /// programmer and connects to them
+  ///
+  func peripheral(
+    _ peripheral: CBPeripheral,
+    didDiscoverCharacteristicsFor service: CBService,
+    error: Error?
+  ) {
+    guard let characteristics = service.characteristics else { return }
+
+    for characteristic in characteristics {
+      if characteristic.properties.contains(.notify) {
+        print("\(characteristic.uuid): properties contains .notify")
+        peripheral.setNotifyValue(true, for: characteristic)
+      }
+    }
+  }
+  
+  ///
+  /// Delegate method called when the heart rate monitor sends data to the
+  /// phone
+  ///
+  func peripheral(
+    _ peripheral: CBPeripheral,
+    didUpdateValueFor characteristic: CBCharacteristic,
+    error: Error?
+  ) {
+    switch characteristic.uuid {
+    case heartRateMeasurementCharacteristicCBUUID:
+      let bpm = heartRate(from: characteristic)
+      print(bpm)
+    default:
+      print("Unhandled Characteristic UUID: \(characteristic.uuid)")
+    }
+  }
+  
+  ///
+  /// This method parses the user's heart rate in BPM and returns it as an integer. The heart rate
+  /// mesurement is in the 2nd, or in the 2nd and 3rd bytes
+  ///
+  private func heartRate(from characteristic: CBCharacteristic) -> Int {
+    print("Hello 3")
+    guard let characteristicData = characteristic.value else { return -1 }
+    let byteArray = [UInt8](characteristicData)
+
+    let firstBitValue = byteArray[0] & 0x01
+    if firstBitValue == 0 {
+      return Int(byteArray[1])
+    } else {
+      return (Int(byteArray[1]) << 8) + Int(byteArray[2])
+    }
   }
   
   ///
@@ -122,11 +199,13 @@ class BluetoothLeService :
     hrvSensors.append(hrvSensor)
   }
   
-  
+  ///
+  /// Singelton Shared instance of the Bluetooth LE Service
+  ///
   public static let shared: BluetoothLeService = {
-    if sharedInstance == nil {
-      sharedInstance = BluetoothLeService()
+    if _sharedInstance == nil {
+      _sharedInstance = BluetoothLeService()
     }
-    return sharedInstance
+    return _sharedInstance
   }()
 }

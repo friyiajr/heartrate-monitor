@@ -29,8 +29,10 @@
                                         <rect key="frame" x="0.0" y="230.5" width="347" height="350"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="347" id="80Q-vA-9Di"/>
-                                            <constraint firstAttribute="height" constant="350" id="rQ7-5D-R09"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="350" id="3WP-aO-dPE"/>
+                                            <constraint firstAttribute="height" constant="350" id="9ga-JY-E5i"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="347" id="d6N-Bl-rl9"/>
+                                            <constraint firstAttribute="width" constant="350" id="zkF-OV-zC5"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="dataSource" destination="BYZ-38-t0r" id="tIc-1T-xeo"/>
@@ -49,6 +51,10 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="RUO-xH-FDD" firstAttribute="top" secondItem="fN1-F5-3cg" secondAttribute="top" id="4wY-xd-5xZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="nxk-s8-pCI" secondAttribute="bottom" id="q0v-7F-kUJ"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -63,11 +69,46 @@
                     <connections>
                         <outlet property="tableView" destination="i4d-UJ-eqv" id="jYm-HX-avV"/>
                         <outlet property="view" destination="i4d-UJ-eqv" id="5Wl-zb-A1Z"/>
+                        <segue destination="Y46-H6-RNJ" kind="showDetail" identifier="showHeartRate" id="nGq-yN-hXu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140.57971014492756" y="128.57142857142856"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="HVD-zA-WyW">
+            <objects>
+                <viewController id="Y46-H6-RNJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="paK-ax-WxH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Your Heart Rate Is" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M9C-hm-dIO">
+                                <rect key="frame" x="78" y="112" width="259" height="56"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="---" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pTG-cv-0RT">
+                                <rect key="frame" x="115" y="344" width="184" height="154"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="121"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="b2n-Ja-ep6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pTG-cv-0RT" firstAttribute="centerY" secondItem="paK-ax-WxH" secondAttribute="centerY" id="4G1-Dy-vFC"/>
+                            <constraint firstItem="pTG-cv-0RT" firstAttribute="centerX" secondItem="paK-ax-WxH" secondAttribute="centerX" id="NeW-QF-UWl"/>
+                            <constraint firstItem="b2n-Ja-ep6" firstAttribute="trailing" secondItem="M9C-hm-dIO" secondAttribute="trailing" constant="77" id="hQ8-LI-0of"/>
+                            <constraint firstItem="M9C-hm-dIO" firstAttribute="leading" secondItem="b2n-Ja-ep6" secondAttribute="leading" constant="78" id="oIM-Vc-bLs"/>
+                            <constraint firstItem="M9C-hm-dIO" firstAttribute="top" secondItem="b2n-Ja-ep6" secondAttribute="top" constant="112" id="ygI-af-KO5"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Vs-Sk-T0O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="915.94202898550736" y="128.57142857142856"/>
         </scene>
     </scenes>
     <resources>

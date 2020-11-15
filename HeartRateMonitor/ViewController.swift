@@ -8,14 +8,19 @@
 import UIKit
 import CoreBluetooth
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController:
+  UIViewController,
+  UITableViewDelegate,
+  UITableViewDataSource
+{
   
   @IBOutlet weak var tableView: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    self.tableView.register(
+      UITableViewCell.self, forCellReuseIdentifier: "cell")
   }
   
   @IBAction func scanForSensors(_ sender: Any) {
@@ -26,7 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // After 3 Seconds stop scanning and populate
     // the results in the UI
     Timer.scheduledTimer(
-      withTimeInterval: 3.0,
+      withTimeInterval: 1.0,
       repeats: true
     ) { timer in
         runCount += 1
@@ -40,20 +45,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
   }
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(
+    _ tableView: UITableView,
+    numberOfRowsInSection section: Int
+  ) -> Int {
     return BluetoothLeService.shared.hrvSensors.count
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
-
-    cell.textLabel?.text = BluetoothLeService.shared.hrvSensors[indexPath.row].keys.first
-
+  func tableView(
+    _ tableView: UITableView,
+    cellForRowAt indexPath: IndexPath
+  ) -> UITableViewCell {
+    let cell:UITableViewCell =
+      self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+    
+    cell.textLabel?.text =
+      BluetoothLeService.shared.hrvSensors[indexPath.row].keys.first
+    
     return cell
   }
   
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print(BluetoothLeService.shared.hrvSensors[indexPath.row].keys.first!)
+  func tableView(
+    _ tableView: UITableView,
+    didSelectRowAt indexPath: IndexPath
+  ) {
+    BluetoothLeService
+      .shared
+      .connectToEliteHrvDevice(
+      peripheral:
+        BluetoothLeService
+          .shared
+          .hrvSensors[indexPath.row].values.first!)
   }
 }
 
