@@ -13,6 +13,7 @@
 		8B2A942B25614FD300F2B053 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B2A942925614FD300F2B053 /* Main.storyboard */; };
 		8B2A942D25614FD400F2B053 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B2A942C25614FD400F2B053 /* Assets.xcassets */; };
 		8B2A943025614FD400F2B053 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B2A942E25614FD400F2B053 /* LaunchScreen.storyboard */; };
+		8B2A943A256151F200F2B053 /* BluetoothLeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A9439256151F200F2B053 /* BluetoothLeService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		8B2A942C25614FD400F2B053 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B2A942F25614FD400F2B053 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B2A943125614FD400F2B053 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B2A9439256151F200F2B053 /* BluetoothLeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothLeService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		8B2A942225614FD300F2B053 /* HeartRateMonitor */ = {
 			isa = PBXGroup;
 			children = (
+				8B2A9438256151D900F2B053 /* BluetoothLeService */,
 				8B2A942325614FD300F2B053 /* AppDelegate.swift */,
 				8B2A942525614FD300F2B053 /* SceneDelegate.swift */,
 				8B2A942725614FD300F2B053 /* ViewController.swift */,
@@ -65,6 +68,14 @@
 				8B2A943125614FD400F2B053 /* Info.plist */,
 			);
 			path = HeartRateMonitor;
+			sourceTree = "<group>";
+		};
+		8B2A9438256151D900F2B053 /* BluetoothLeService */ = {
+			isa = PBXGroup;
+			children = (
+				8B2A9439256151F200F2B053 /* BluetoothLeService.swift */,
+			);
+			path = BluetoothLeService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +151,7 @@
 				8B2A942825614FD300F2B053 /* ViewController.swift in Sources */,
 				8B2A942425614FD300F2B053 /* AppDelegate.swift in Sources */,
 				8B2A942625614FD300F2B053 /* SceneDelegate.swift in Sources */,
+				8B2A943A256151F200F2B053 /* BluetoothLeService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

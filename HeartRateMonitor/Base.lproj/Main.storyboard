@@ -16,28 +16,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Scan for EliteHRV Heart Rate Monitor" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUO-xH-FDD">
-                                <rect key="frame" x="95" y="113" width="225" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxk-s8-pCI">
-                                <rect key="frame" x="87" y="766" width="241" height="30"/>
-                                <state key="normal" title="Scan for EliteHRV Monitors"/>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="fN1-F5-3cg">
+                                <rect key="frame" x="34" y="111" width="347" height="692.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Scan for EliteHRV Heart Rate Monitor" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUO-xH-FDD">
+                                        <rect key="frame" x="6.5" y="0.0" width="334" height="168.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i4d-UJ-eqv">
+                                        <rect key="frame" x="0.0" y="230.5" width="347" height="350"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="347" id="80Q-vA-9Di"/>
+                                            <constraint firstAttribute="height" constant="350" id="rQ7-5D-R09"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="tIc-1T-xeo"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="XYk-Uy-2e6"/>
+                                        </connections>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxk-s8-pCI">
+                                        <rect key="frame" x="61" y="642.5" width="225" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="225" id="75r-Ld-wwe"/>
+                                            <constraint firstAttribute="height" constant="50" id="ib0-kK-PJo"/>
+                                        </constraints>
+                                        <state key="normal" title="Scan for EliteHRV Monitors"/>
+                                        <connections>
+                                            <action selector="scanForSensors:" destination="BYZ-38-t0r" eventType="touchUpInside" id="awC-bw-vkO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nxk-s8-pCI" secondAttribute="trailing" constant="86" id="EYu-ax-lrm"/>
-                            <constraint firstItem="nxk-s8-pCI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="Nwz-mQ-cJv"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RUO-xH-FDD" secondAttribute="trailing" constant="94" id="Pvf-15-Ir9"/>
-                            <constraint firstItem="RUO-xH-FDD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="69" id="ZEk-wr-YhX"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nxk-s8-pCI" secondAttribute="bottom" constant="66" id="aSt-7G-xZT"/>
-                            <constraint firstItem="RUO-xH-FDD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="95" id="e3P-Pe-eWh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fN1-F5-3cg" secondAttribute="trailing" constant="33" id="8nd-gF-J52"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fN1-F5-3cg" secondAttribute="bottom" constant="58.5" id="Ss3-dG-6MA"/>
+                            <constraint firstItem="fN1-F5-3cg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="34" id="mtY-SA-gTM"/>
+                            <constraint firstItem="fN1-F5-3cg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="67" id="tt9-2T-4WW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="i4d-UJ-eqv" id="jYm-HX-avV"/>
+                        <outlet property="view" destination="i4d-UJ-eqv" id="5Wl-zb-A1Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
